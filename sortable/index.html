@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+
+	<title></title>
+</head>
+<body>
+<div id="simple-list" class="row">
+			<h4 class="col-12">Simple list example</h4>
+			<div id="items" class="list-group col">
+				<div data-id="111" class="list-group-item">Item 1</div>
+				<div data-id="112" class="list-group-item">Item 2</div>
+				<div data-id="113" class="list-group-item">Item 3</div>
+				<div data-id="114" class="list-group-item">Item 4</div>
+				<div data-id="115" class="list-group-item">Item 5</div>
+				<div data-id="116" class="list-group-item">Item 6</div>
+			</div>
+</body>
+<!--
+Este es un ejemplo de Sortable JS
+En FM hay que tener en cuenta que hay que guardar el resultado. En este fichero hay 3 maneras de hacerlo.
+
+-->
+
+<script type="text/javascript">
+var el = document.getElementById('items');
+var sortable = new Sortable(el, {
+    animation: 150,
+    ghostClass: 'blue-background-class',
+    dataIdAttr: 'data-id', // si no se declara, toma data-id por defecto.
+    onSort: function (evt) {
+var orden = sortable.toArray();
+var nuevo = document.getElementById('items').innerHTML;
+
+//Sensei
+const elements = evt.to.children;
+// evt es el objeto de sortable; puede llamarse de cualquier manera
+const len=elements.length;
+let text = "";
+let arr=[];
+for (let i = 0; i < len; i++) {
+text += elements[i].getAttribute('data-id') + ", "// opción 1 genera un string
+arr.push(elements[i].getAttribute('data-id'));// opción 2 genera un array
+};
+
+tipo= typeof (arr);
+
+alert(arr[0])
+
+}
+
+});
+</script>
+</html>
